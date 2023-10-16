@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-# Assignment 4
 # Jack Cacela and Spencer Marks
 # This Python program accepts a yes or no value, as well as a birth month and a day of the month from the command line and displays the corresponding constellation and related information.
 
