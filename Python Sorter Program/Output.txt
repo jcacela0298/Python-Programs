@@ -1,0 +1,12 @@
+Enter two or more words separated only by spaces: cherry blossom alpha
+Sorted strings: alpha blossom cherry
+
+Enter two or more words separated only by spaces: cherry
+Please enter two or more words to sort.
+
+Enter two or more words separated only by spaces: spencer jack katherine rhinocerous dog
+Sorted strings: dog jack katherine rhinocerous spencer
+
+Enter two or more words separated only by spaces: these words will be alphabetized
+Sorted strings: alphabetized be these words will
+
