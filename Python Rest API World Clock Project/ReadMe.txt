@@ -2,32 +2,28 @@ This project was completed by Jack Cacela and Spencer Marks.
 
 The purpose of this project is to learn about REST API by communicating with the World Clock API.
 
-In the EndpointApp.py file we initialize the Flask application and define the Get Endpoint so we can make communications between the file and the World Clock API.
+In the EndpointApp.py file, we initialize the Flask application and define the Get Endpoint so we can make communications between the file and the World Clock API.
 
 In the Client.py file, we make it so we can make Get requests via the command prompt by providing a parameter when we run the file -- For example: python Client.py est
 
-In the ClientCommandTest.py file, we create three testing scenarios -- a viable, non viable, and absent parameter for the Client.py file.
+In the ClientCommandTest.py file, we create three testing scenarios -- a viable, non-viable, and absent parameter for the Client.py file.
 
 In the ClientMockTest.py file, we create mock data and a mock call to the WorldClockAPI to make sure the Client.py file will handle successful and unsuccessful error codes.
 
 In the ClientLiveEndpointTest.py file, we test to see if the actual call to the WorldClockAPI is equal to what we set in the expected output variable.
 
-There are more specific details about each file written within the files themselves at the top. Below are my additional comments/what I learned /aknowledgements for each file:
-
-
+There are more specific details about each file written within the files themselves at the top. Below are my additional comments/what I learned / acknowledgments for each file:
 *
 *
 *
 *
-
-
 			EndpointApp.py File
 
 For the first file, EndpointApp.py, I learned many things. First, we need to import Flask, which is Python's "popular web framework" which gives us all the tools and libraries for this project following REST principles. We need to import Flask, along with the request, requests, and jsonify modules to handle requests, generate JSON responses and make HTTP requests to an external API. The following code: app = Flask(__name__) is a way to initialize the flask application and make it so if this code is run as the main program, name gets converted to main (see code at very bottom) and this allows the flask application to run. @app.route is used to define a route for a GET request (which is triggered when the "/get_time" endpoint in the client code or Client.py file is requested for, or when we type the url "localhost:8080/get_time?timezone=est"), which would then proceed to the get_time() method within this file. To clarify further, the primary endpoint is the route defined by @app.route('/get_time', methods=['GET']). So, when we access the URL http://localhost:8080/get_time using a web browser / client that sends an HTTP GET request, we are actually interacting with the "get_time" endpoint. As we define the get_time() method, we set the required timezone parameter into the timezone variable, which is either what the user manually inputs in the url, or is est if the user only enters the url as "localhost:8080/get_time". Then, for the 
 
 api_url = f"http://worldclockapi.com/api/json/{timezone}/now"
 
-line, we create a variable called api_url to construct the URL for the WorldClock external API, and the {timezone} parameter is substituted with what the timezone variable contains (since we stored the client's timezone parameter, or lacktherof, into the timezone variable and because we added the "f" we make it an f string where we can substitute things within {} to their variable value). So requests.get() is used to send an HTTP GET request to WorldClock API, passing our completely constructed URL, and we then store the response of the request in to the response variable. Once we have the response, we need to make sure it is status code 200 (success), and then we parse the json data and put it into the time_data variable via time_data = response.json(), and then retrieve the time_data's "currentDateTime" and store it into the current_time variable. If the status code is not 200, we handle the situation with the try/except block. If there is an error, it sets current_time to an appropriate error message. The last step here is to return the final response (whether it is an error message or the appropriate time) converted back into JSON to the client via
+line, we create a variable called api_url to construct the URL for the WorldClock external API, and the {timezone} parameter is substituted with what the timezone variable contains (since we stored the client's timezone parameter, or lack thereof, into the timezone variable and because we added the "f" we make it an f string where we can substitute things within {} to their variable value). So requests.get() is used to send an HTTP GET request to WorldClock API, passing our completely constructed URL, and we then store the response of the request into the response variable. Once we have the response, we need to make sure it is status code 200 (success), and then we parse the JSON data and put it into the time_data variable via time_data = response.json(), and then retrieve the time_data's "currentDateTime" and store it into the current_time variable. If the status code is not 200, we handle the situation with the try/except block. If there is an error, it sets current_time to an appropriate error message. The last step here is to return the final response (whether it is an error message or the appropriate time) converted back into JSON to the client via
 
 return jsonify({'time': current_time})
 
@@ -70,9 +66,9 @@ Then, the syntax to make the GET request to the endpoint including the parameter
 
 response = requests.get(endpoint_url, params=params)
 
-Once the response is in the response variable, we performing error handling logic in a try/except block by first checking if the status is a success (200) or a failure, we parse the json response via response.json, and we return the result back to the user.
+Once the response is in the response variable, we perform error handling logic in a try/except block by first checking if the status is a success (200) or a failure, we parse the JSON response via response.json, and we return the result back to the user.
 
-Lastly, at the bottom, we have an if statement assessing whether or not the Client.py file is ran by itself or if it is invoked by another program. If it is ran by itself, its contents include a user-friendly interaction that first assesses whether or not they entered a parameter along with the file, and whether or not that parameter is three characters. Remember, the correct syntax for running the file to find EST time is this:
+Lastly, at the bottom, we have an if statement assessing whether or not the Client.py file is run by itself or if it is invoked by another program. If it is ran by itself, its contents include a user-friendly interaction that first assesses whether or not they entered a parameter along with the file, and whether or not that parameter is three characters. Remember, the correct syntax for running the file to find EST time is this:
 
 python Client.py est
 
@@ -84,11 +80,11 @@ This file is to test the Command Line Client, which is our Client.py file. More 
 
 First, we need to import unittest which allows us to test our code with test cases and suites. We also need to import subprocesses so we can generate scenarios or "subprocesses" that we need for testing, and so that we can connect to the output, input, and error pipes, and retrieve their return codes.
 
-We then make a TestCommandLineClient class where we define three methods. The first is the method / scenario where the correct time zone parameter is entered. We create a subprocess with these characteristics, use subprocess.run to run this process, and store the result in the "result" variable. Stout=subprocess.PIPE captures the subprocesses's standard output, and stderr=subprocess.PIPE captures the standard error. I learned that Universal_newlines=True just makes it known to the system that our output needs to be decoded using our system's default text encoding. A positive return code for subprocesses is typically 0, which is why we have the line self.assertEqual(result.returncode, o). Lastly, for this method, we create a variable that stores the string "Current time in est", and then we check whether this string is present in the standard output of that method via "self.assertIn(expected_string, result.stdout)", which would indicate that the test was a success and the est parameter was viable since "Current time in est" was in fact returned.
+We then make a TestCommandLineClient class where we define three methods. The first is the method/scenario where the correct time zone parameter is entered. We create a subprocess with these characteristics, use subprocess.run to run this process, and store the result in the "result" variable. Stout=subprocess.PIPE captures the subprocesses' standard output, and stderr=subprocess.PIPE captures the standard error. I learned that Universal_newlines=True just makes it known to the system that our output needs to be decoded using our system's default text encoding. A positive return code for subprocesses is typically 0, which is why we have the line self.assertEqual(result.returncode, o). Lastly, for this method, we create a variable that stores the string "Current time in est", and then we check whether this string is present in the standard output of that method via "self.assertIn(expected_string, result.stdout)", which would indicate that the test was a success and the est parameter was viable since "Current time in est" was in fact returned.
 
-Next, we have the method / scenario where no parameter is inputted, in which case we would still perform the steps listed in the previous method, but we would assert that the returncode is "1" which is a failure, and we would assert that the error message we receive is equal to " 'Usage: python client.py <timezone>\n' ", which is what we typically would receive in the Client.py file in this scenario.
+Next, we have the method/scenario where no parameter is inputted, in which case we would still perform the steps listed in the previous method, but we would assert that the return code is "1" which is a failure, and we would assert that the error message we receive is equal to " 'Usage: python client.py <timezone>\n' ", which is what we typically would receive in the Client.py file in this scenario.
 
-Then, we create the method / scenario where a parameter has 4 characters and is therefore incorrect -- again we would assert that the returncode is "1" for a failure, and again and we would assert that the error message we receive is equal to " 'Usage: python client.py <timezone>\n' ".
+Then, we create the method/scenario where a parameter has 4 characters and is therefore incorrect -- again we would assert that the return code is "1" for a failure, and again and we would assert that the error message we receive is equal to " 'Usage: python client.py <timezone>\n' ".
 
 When running this file to test the three test scenarios, the result in the command prompt should be as follows: 
 
@@ -99,7 +95,7 @@ OK"
 			ClientMockTest.py File
 
 This is to satisfy the following requirements: 
-"Write unit tests using MOCKS that that test the endpoint – mock out the call to http://worldclockapi.com/api/json/est/now and just return a hard coded value."
+"Write unit tests using MOCKS that that test the endpoint – mock out the call to http://worldclockapi.com/api/json/est/now and just return a hard-coded value."
 
 Just to summarize what this file accomplishes, test methods are set up in this file to validate the behavior of the get_current_time function from Client.py in two different scenarios: a successful request with a 200 status code and a failed request with a 404 status code. We make sure that the function behaves correctly in response to these different conditions and equals an expected response.
 
@@ -147,8 +143,3 @@ This file is to satisfy the following requirement: "Write an Acceptance test tha
 To begin, we need to import unittest which allows us to both run and create tests, and we also need to import subprocess so we can run a subprocess from Client.py The first method we create is test_live_successful_client_request() where the goal is to run a process where the Client.py file is ran with a proper est parameter, and assess whether or not the exact time received equals what we have in our expected output variable. This differs from the ClientCommandTest.py file because in that file, we are assessing simply whether or not the expected output contains "Current time in est", whereas in this file we are assessing whether or not the exact output is a match. For this reason, we need to ensure we update line 23 to our current time, which by default is this: 
 
 expected_output = "Current time in est: 2023-11-11T10:53-05:00\n"
-
-
-
-
-			
