@@ -1,0 +1,36 @@
+Program Demo:
+
+
+Enter a last name, or first and last name: John Brady
+John Brady, 321-555-6932
+Enter a last name, or first and last name: JOHN BRADY
+John Brady, 321-555-6932
+Enter a last name, or first and last name: cheen
+No match found.
+Enter a last name, or first and last name: chen
+James Chen, 256-555-3331
+Enter a last name, or first and last name: Smith
+Drew Smith, 412-555-2121
+Elizabeth Smith, 412-555-2121
+Enter a last name, or first and last name: John Brady Drew Smith
+Error: Only enter a last name or a first and last name.
+Enter a last name, or first and last name: John
+No match found.
+Enter a last name, or first and last name: Pradeep Acharya
+Pradeep Acharya, 301-555-3276
+Enter a last name, or first and last name: Testing
+No match found.
+Enter a last name, or first and last name:
+Exiting...
+
+
+
+phones.txt pasted below for your convenience:
+
+Pradeep Acharya 301-555-3276
+John Brady 321-555-6932
+James Chen 256-555-3331
+Josh Kelly 424-555-4053
+Brady Parker 756-555-3828
+Drew Smith 412-555-2121
+Elizabeth Smith 412-555-2121
