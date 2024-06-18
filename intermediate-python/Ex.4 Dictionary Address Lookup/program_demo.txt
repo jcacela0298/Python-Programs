@@ -1,0 +1,20 @@
+Lookup (1) phone numbers or (2) addresses: 1
+Enter space-separated first and last name: Drew Smith
+Phone: 412-555-2121
+Lookup (1) phone numbers or (2) addresses: 2
+Enter space-separated first and last name: Drew SmITH
+Street: 285 Andover Lane
+City: Pompano Beach
+State: FL
+Zip Code: 33060
+Lookup (1) phone numbers or (2) addresses: 4
+Invalid choice. Please enter 1 or 2.
+Lookup (1) phone numbers or (2) addresses: s
+Invalid choice. Please enter 1 or 2.
+Lookup (1) phone numbers or (2) addresses: 1
+Enter space-separated first and last name: Drew
+Error: person not found.
+Lookup (1) phone numbers or (2) addresses: 2
+Enter space-separated first and last name: Smith
+Error: person not found.
+Lookup (1) phone numbers or (2) addresses:
