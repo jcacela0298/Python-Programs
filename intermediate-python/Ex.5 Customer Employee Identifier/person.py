@@ -1,5 +1,6 @@
 """
 File: person.py
+Author: Jack Cacela
 This is the blueprint for creating a person for the identification program.
 """
 
