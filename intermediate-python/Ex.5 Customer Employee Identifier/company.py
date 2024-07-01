@@ -1,5 +1,6 @@
 """ 
 File: company.py
+Author: Jack Cacela
 Defines classes for a Customer and an Employee using inheritance and overriding.
 """
 
