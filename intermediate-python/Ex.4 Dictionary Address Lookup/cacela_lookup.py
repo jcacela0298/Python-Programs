@@ -29,10 +29,8 @@ Note:
 """
 
 
-
 # Import sys for error handling
 import sys
-
 
 
 def main():
@@ -61,26 +59,18 @@ def main():
         except ValueError:
             print("Invalid choice. Please enter 1 or 2.")
 
-    
-
-#**************************************************************
-# Function: input_addresses 
-# 
-# Purpose: Stores the information from the address.txt file into 
-# a dictionary called the_dictionary, creating key value pairs 
-# where the first and last name is the key, and the value is the 
-# rest of the line associated with the first and last name.
-#          
-# Parameters: void
-# 
-# Returns:
-#
-#    the_dictionary - The completed dictionary 
-#  
-#**************************************************************    
+   
 
 def input_addresses():
-
+"""
+Stores the information from the address.txt file into 
+a dictionary called the_dictionary, creating key value pairs 
+where the first and last name is the key, and the value is the 
+rest of the line associated with the first and last name.
+Parameters: void
+Returns: the_dictionary - The completed dictionary
+"""
+    
     # Create a dictionary
     the_dictionary = {}
 
@@ -101,24 +91,18 @@ def input_addresses():
 
 
 
-#**************************************************************
-# Function: output 
-# 
-# Purpose: Collects the requested first and last name from the user
-# and returns the information in the specified format from the dictionary. 
-#          
-# Parameters: 
-#               info_dict - The completed dictionary.
-#               display - the value, 1 or 2, as selected by the user,
-#                         and the default is set to 1.
-# 
-# Returns:
-#
-#    prints the information in the format that the user requests.
-#  
-#**************************************************************  
-
 def output(info_dict, display=1):
+"""
+Purpose: Collects the requested first and last name from the user
+and returns the information in the specified format from the dictionary. 
+      
+Parameters: 
+info_dict - The completed dictionary.
+display - the value, 1 or 2, as selected by the user,
+and the default is set to 1.
+    
+Returns: prints the information in the format that the user requests.
+"""
 
     # Convert the user input to lower case and remove any leading and trailing spaces
     name = input("Enter space-separated first and last name: ").strip().lower()
@@ -146,13 +130,5 @@ def output(info_dict, display=1):
     else:
         print("Error: person not found.")
 
-
-
-# When you run this script directly from terminal or the command line, __name__ is set to "__main__", 
-# which makes this below statement true, so the main() function from this script is called.
-# However, if you import this script as a module into another script, __name__ becomes equal to the name of the other script
-# That it is being imported into, so that main() from this script does not automatically run when the other script is run.
-# The reason for this is so that if imported into another script, functions from this current script may
-# Be used within the other script, without the main() function from this script activating and interfering with the other script.
 if __name__ == "__main__":
     main()
