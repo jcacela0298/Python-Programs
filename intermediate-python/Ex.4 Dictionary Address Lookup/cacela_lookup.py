@@ -28,13 +28,10 @@ Note:
 - Proper error handling is implemented for file not found and invalid user input.
 """
 
-
 # Import sys for error handling
 import sys
 
-
 def main():
-
     # Call the input_addresses function to populate the address/phone dictionary
     info_dict = input_addresses()
     
@@ -59,17 +56,15 @@ def main():
         except ValueError:
             print("Invalid choice. Please enter 1 or 2.")
 
-   
-
 def input_addresses():
-"""
-Stores the information from the address.txt file into 
-a dictionary called the_dictionary, creating key value pairs 
-where the first and last name is the key, and the value is the 
-rest of the line associated with the first and last name.
-Parameters: void
-Returns: the_dictionary - The completed dictionary
-"""
+    """
+    Stores the information from the address.txt file into 
+    a dictionary called the_dictionary, creating key value pairs 
+    where the first and last name is the key, and the value is the 
+    rest of the line associated with the first and last name.
+    Parameters: void
+    Returns: the_dictionary - The completed dictionary
+    """
     
     # Create a dictionary
     the_dictionary = {}
@@ -82,27 +77,24 @@ Returns: the_dictionary - The completed dictionary
             first_last = parts[0].strip().lower()  # First and last name combined as the key
             the_dictionary[first_last] = line.strip()  # Setting the rest of the line as the value
         f.close()
-
     except FileNotFoundError:
         print("Error: the file 'address.txt' was not found.")
         sys.exit(1) # Exit the program if the file is not found
 
     return the_dictionary # Return the completed dictionary back to the calling function
 
-
-
 def output(info_dict, display=1):
-"""
-Purpose: Collects the requested first and last name from the user
-and returns the information in the specified format from the dictionary. 
+    """
+    Purpose: Collects the requested first and last name from the user
+    and returns the information in the specified format from the dictionary. 
       
-Parameters: 
-info_dict - The completed dictionary.
-display - the value, 1 or 2, as selected by the user,
-and the default is set to 1.
+    Parameters: 
+    info_dict - The completed dictionary.
+    display - the value, 1 or 2, as selected by the user,
+    and the default is set to 1.
     
-Returns: prints the information in the format that the user requests.
-"""
+    Returns: prints the information in the format that the user requests.
+    """
 
     # Convert the user input to lower case and remove any leading and trailing spaces
     name = input("Enter space-separated first and last name: ").strip().lower()
