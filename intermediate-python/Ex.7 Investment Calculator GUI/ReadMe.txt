@@ -10,6 +10,4 @@ To run this program, simply enter the initial amount of money, amount of time in
 
 Example:
 
-Initial amount: 50000
-Years: 5
-Interest rate %: 6.25
+(See attached image named "Demo" in this folder)
