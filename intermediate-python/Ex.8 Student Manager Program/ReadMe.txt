@@ -1,7 +1,7 @@
 Features:
 
 
-This student.py file focuses on the class and object paradigm for Python programming where we include the __init__ method to initialize a new student object, getters, setters, and the __str__ method which returns the string representation of the object with the characteristics and instance variables on display at a given time.
+This student.py file focuses on the class and object paradigm for Python programming where we include getters, setters, the __init__ method to initialize a new student object, and the __str__ method which returns the string representation of the object with the characteristics and instance variables at a given time.
 
 At the end, the line of code:
 
