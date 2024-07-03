@@ -3,11 +3,11 @@ Features:
 
 This student.py file focuses on the class and object paradigm for Python programming where we include getters, setters, the __init__ method to initialize a new student object, and the __str__ method which returns the string representation of the object with the characteristics and instance variables at a given time.
 
-At the end, the line of code:
+An interesting part of the __str__ method includes the following line of code:
 
 " ".join(map(str, self.scores)) 
 
-constructs a space-separated string of the scores, where we use map to implement the string function to each score in the array.
+which helps construct a space-separated string of the scores, where we use "map" to implement the string function to each score in the array.
 
 At the end, this file also includes this code:
 
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     print("Highest score:", student1.getHighScore())
 
 
-Which is one way of testing the program -- When this program is run directly, and not imported as a module, it will run the code under 
+Which is one way of testing the program -- When this program is run directly, and not imported as a module, it will run the code under:
 
 if __name__ == "__main__":
 
