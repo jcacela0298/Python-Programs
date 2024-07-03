@@ -11,7 +11,7 @@ The bank.py file with the Bank class imports the savingsaccount.py file as a dep
 
 Usage:
 
-To use this program, feel free to run the "test.py" file, and verify in the "demo.txt" file that the methods work properly. Feel free to re-run it the test.py file with your own values -- Below are the methods for each module.
+To use this program, run the "test.py" file, and observe in the "demo.txt" file the results of the print statements from the "test.py" file to observe the method functionality. Also, feel free to re-run the test.py file with your own values -- below are the methods for each module.
 
 
 Savings Account Methods				Description
@@ -32,8 +32,6 @@ a.getPin()					Returns the account’s PIN.
 a.computeInterest()				Computes the account’s interest and deposits it.
 
 a.__str__()					Same as str(a). Returns the string representation of the account.
-
-
 
 
 
