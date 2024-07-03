@@ -1,0 +1,41 @@
+This is what the test file should produce for each print statement:
+
+
+
+
+Bank after adding these accounts:
+Name: Wilma
+PIN: 1001
+Balance: 4000.0
+Name: Fred
+PIN: 1002
+Balance: 1000.0
+
+Account with incorrect PIN (should be None):
+None
+
+Account with correct PIN:
+Name: Wilma
+PIN: 1001
+Balance: 4000.0
+
+Account after depositing 25.00:
+Name: Wilma
+PIN: 1001
+Balance: 4025.0
+
+Bank after deposit:
+Name: Wilma
+PIN: 1001
+Balance: 4025.0
+Name: Fred
+PIN: 1002
+Balance: 1000.0
+
+New bank loaded from file:
+Name: Wilma
+PIN: 1001
+Balance: 4025.0
+Name: Fred
+PIN: 1002
+Balance: 1000.0
