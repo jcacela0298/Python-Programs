@@ -1,0 +1,17 @@
+This is what the test file should produce for each print statement:
+
+
+
+
+Circle after adding these parameters:
+color: red
+opacity: 5
+radius: 6.0
+Circle area: 113.09733552923255
+Triangle after adding these parameters:
+color: green
+opacity: 10
+base: 4.0
+height: 10.0
+Triangle area: 20.0
+Press Enter to exit...
