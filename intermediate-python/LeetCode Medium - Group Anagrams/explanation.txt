@@ -1,0 +1,65 @@
+Let’s clarify how the res dictionary works and how res.values() helps in grouping anagrams together:
+
+    Count Array to Tuple:
+    For the string "eat", the count array is [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], where each index corresponds to a letter of the alphabet.
+
+    This count array is converted to a tuple: (1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1).
+
+    Dictionary Update:
+        Key: The tuple (1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1) is used as the key.
+        Value: The value for this key is a list of strings that have this particular letter frequency.
+
+    So, for "eat", the res dictionary will look like this:
+
+
+
+res = {
+    (1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1): ["eat"]
+}
+
+
+
+Processing More Strings:
+As you continue processing other strings like "tea", "tan", "ate", etc., each will have the same count tuple (1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1) because they are anagrams of "eat". Thus, "tea" and "ate" will be appended to the same list in the dictionary under this key.
+
+For example:
+
+
+
+
+
+res = {
+    (1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1): ["eat", "tea", "ate"]
+}
+
+
+
+Strings "tan" and "nat" will have a different count tuple and be stored under a different key:
+
+
+
+res = {
+    (1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1): ["tan", "nat"],
+    (1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1): ["eat", "tea", "ate"]
+}
+
+
+
+
+Result:
+When you call return res.values(), it returns a view of all the lists of anagrams grouped by their count tuples. The output will be a collection of lists where each list contains anagrams of each other.
+
+For instance, res.values() might give you something like:
+
+
+
+dict_values([
+    ["eat", "tea", "ate"],
+    ["tan", "nat"],
+    ["bat"]
+])
+
+
+
+This collection represents the anagram groups, each list containing words that are anagrams of each other.
+
